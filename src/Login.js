@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
 const Login = () => {
     return(
@@ -13,6 +13,8 @@ const Login = () => {
                 <TextInput  style={styles.input} placeholder="Email"/>
                 <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true}/>
             </View>
+            <Button title='Login' color='#233872' style={styles.buttonStyle}/>
+
         </View>
     )
 }
@@ -29,12 +31,14 @@ const styles = StyleSheet.create({
 
     greetingText: {
         marginTop: '.5rem',
-        color: 'gray'
+        color: 'gray',
+        marginBottom: 20
     },
 
     h1: {
         fontSize: '1.5rem',
-        fontWeight: '600'
+        fontWeight: '600',
+        marginBottom: 12
     },
 
     formGroup : {
@@ -47,6 +51,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#F6F6F6',
         padding: 10,
         borderRadius: 10
+    },
+    buttonStyle : {
+        margin: 100,
+        borderRadius: 24
     }
 
   });
