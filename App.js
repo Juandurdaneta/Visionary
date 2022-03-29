@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './src/Login';
+import Register from './src/Register';
+
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 export default function App() {
@@ -8,6 +10,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/register" element={ <Register /> } />
         </Routes>
       </Router>
     );

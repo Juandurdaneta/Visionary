@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     return(
         <View style={styles.container}>
+
             <View style={styles.greeting}>
                 <Text style={styles.h1}>Welcome,<br/>Login Now.</Text>
-                <Text style={styles.greetingText}>If you are new here / Create New</Text>
+                <Text style={styles.greetingText}>If you are new here / <Link to={'/register'}>Create New</Link></Text>
             </View>
 
             <View style={styles.formGroup}>
                 <TextInput  style={styles.input} placeholder="Email"/>
                 <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true}/>
-            </View>
             <Button title='Login' color='#233872' style={styles.buttonStyle}/>
+            </View>
 
         </View>
     )
@@ -32,8 +38,7 @@ const styles = StyleSheet.create({
     greetingText: {
         marginTop: '.5rem',
         color: 'gray',
-        marginBottom: 20
-    },
+        marginBottom: 20    },
 
     h1: {
         fontSize: '1.5rem',
@@ -55,6 +60,9 @@ const styles = StyleSheet.create({
     buttonStyle : {
         margin: 100,
         borderRadius: 24
+    },
+    link : {
+        textDecorationLine: 'none'
     }
 
   });
