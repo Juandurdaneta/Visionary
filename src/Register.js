@@ -4,48 +4,58 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
     return(
+
+        <>    
+        <View style={styles.background_header}></View>
         <View style={styles.container}>
 
-        <View style={styles.greeting}>
-                <Text style={styles.h1}>Welcome,<br/>Join today.</Text>
-                <Text style={styles.greetingText}>If you already have an account / <Link to={'/'}>Log in</Link></Text>
-            </View>
 
-            <View style={styles.formGroup}>
-                <TextInput  style={styles.input} placeholder="Email"/>
-                <TextInput  style={styles.input} placeholder="Username"/>
-                <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true}/>
-            <Button title='Sign Up' color='#233872' style={styles.buttonStyle}/>
-            </View>
+            <View style={styles.greeting}>
+                    <Text style={styles.greetingText}>Welcome!</Text> <Text style={styles.h1}>Join our community today.</Text>
+                </View>
+
+                <View style={styles.formGroup}>
+                    <TextInput  style={styles.input} placeholder="Email"/>
+                    <TextInput  style={styles.input} placeholder="Username"/>
+                    <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true}/>
+                <Button title='Sign Up' color='#233872' style={styles.buttonStyle}/>
+                </View>
+                <Text style={styles.paragraph}>Already have an account? / <Link to={'/'}>Log in</Link></Text>
 
         </View>
+        </>
+
     )
 }
 
 const styles = StyleSheet.create({
+
+
+    background_header : {
+        height: '30vh',
+        backgroundImage : 'url("https://cdn.dribbble.com/users/334862/screenshots/15610485/media/8dcf04f337509b1b306c7727907115e0.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    },
     container: {
         backgroundColor: '#fff',
-        padding: '8%'
+        padding: '8%',
       },
       greeting: {
-        marginTop: '8rem',
+        marginTop: '1rem',
     },
-
     greetingText: {
         marginTop: '.5rem',
         color: 'gray',
-        marginBottom: 20    },
-
+    },
     h1: {
-        fontSize: '1.5rem',
+        fontSize: '1.4rem',
         fontWeight: '600',
         marginBottom: 12
     },
-
     formGroup : {
-        marginTop: '1.6rem'
+        marginTop: '1rem'
     },
-
     input: {
         height: 50,
         marginBottom: 25,
@@ -57,8 +67,9 @@ const styles = StyleSheet.create({
         margin: 100,
         borderRadius: 24
     },
-    link : {
-        textDecorationLine: 'none'
+    paragraph : {
+        marginTop : 15,
+        color: 'gray'
     }
   
 })
