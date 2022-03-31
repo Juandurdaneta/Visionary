@@ -8,22 +8,25 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
+    const [message, setMessage] = useState('');
 
     const handleSubmit = async () => {
-        setError(false);
+        setMessage('');
         try {
-            const user = await API.createUser(
+            const data = await API.createUser(
                 username,
                 email,
                 password
             );
 
-            console.log(user);
+            console.log(data);
+            
+            setMessage(data.message)
 
+            if(data.status === 200) {setUsername('') ; setEmail(''); setPassword('')}
 
         } catch(error) {
-            setError(true);
+            setMessage(error);
             console.log(error);
         }
     }
@@ -45,8 +48,12 @@ const Register = () => {
 
         <>    
         <View style={styles.background_header}></View>
+        
         <View style={styles.container}>
 
+            <View style={styles.message}>
+                {!!message && <Text>{message}</Text>}
+            </View>
 
             <View style={styles.greeting}>
                     <Text style={styles.greetingText}>Welcome! <br/><Text style={styles.h1}>Join our community today.</Text></Text>
@@ -77,7 +84,7 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: '#fff',
-        padding: '8%',
+        padding: '6%',
       },
       greeting: {
         marginTop: '1rem',
@@ -108,6 +115,9 @@ const styles = StyleSheet.create({
     paragraph : {
         marginTop : 15,
         color: 'gray'
+    },
+    message : {
+        backgroundColor: 'lightblue',
     }
   
 })

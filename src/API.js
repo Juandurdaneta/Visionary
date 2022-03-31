@@ -25,6 +25,22 @@ const apiSettings = {
         ).json();
 
         return data;
+    },
+    
+    authenticate : async(email, password) => {
+        const bodyData = {
+            email,
+            password
+        };
+        // sending request to the API
+        const data = await(
+            await fetch(`${API_URL}/users/login`, {
+                ...defaultConfig,
+                body: JSON.stringify(bodyData)
+            })
+        ).json();
+
+        return data;
     }
 }
 
