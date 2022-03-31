@@ -1,8 +1,46 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { Link } from "react-router-dom";
-
+import register_header_image from "./images/register_header_image.png"
+import API from './API.js'
 const Register = () => {
+
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
+
+    const handleSubmit = async () => {
+        setError(false);
+        try {
+            const user = await API.createUser(
+                username,
+                email,
+                password
+            );
+
+            console.log(user);
+
+
+        } catch(error) {
+            setError(true);
+            console.log(error);
+        }
+    }
+
+    const handleInput = e =>{
+        const name = e.currentTarget.name;
+        const value = e.currentTarget.value;
+
+        if(name === 'username') setUsername(value);
+        if( name === 'email') setEmail(value);
+        if(name === 'password') setPassword(value);
+
+        console.log(e.currentTarget)
+
+    }
+
+
     return(
 
         <>    
@@ -11,14 +49,14 @@ const Register = () => {
 
 
             <View style={styles.greeting}>
-                    <Text style={styles.greetingText}>Welcome!</Text> <Text style={styles.h1}>Join our community today.</Text>
+                    <Text style={styles.greetingText}>Welcome! <br/><Text style={styles.h1}>Join our community today.</Text></Text>
                 </View>
 
                 <View style={styles.formGroup}>
-                    <TextInput  style={styles.input} placeholder="Email"/>
-                    <TextInput  style={styles.input} placeholder="Username"/>
-                    <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true}/>
-                <Button title='Sign Up' color='#233872' style={styles.buttonStyle}/>
+                    <TextInput  style={styles.input} placeholder="Email" value={email} onChangeText={setEmail}  />
+                    <TextInput  style={styles.input} placeholder="Username" value={username} onChangeText={setUsername}  />
+                    <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword}  />
+                <Button title='Sign Up' color='#046BF1' style={styles.buttonStyle} onPress={handleSubmit}/>
                 </View>
                 <Text style={styles.paragraph}>Already have an account? / <Link to={'/'}>Log in</Link></Text>
 
@@ -33,7 +71,7 @@ const styles = StyleSheet.create({
 
     background_header : {
         height: '30vh',
-        backgroundImage : 'url("https://cdn.dribbble.com/users/334862/screenshots/15610485/media/8dcf04f337509b1b306c7727907115e0.png")',
+        backgroundImage : `url(${register_header_image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     },

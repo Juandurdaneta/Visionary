@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { Link } from "react-router-dom";
+import login_header_image from "./images/login_header_image.jpeg"
+
 
 const Login = () => {
 
@@ -13,7 +15,7 @@ const Login = () => {
         <View style={styles.container}>
 
             <View style={styles.greeting}>
-            <Text style={styles.greetingText}>Welcome back!</Text> <Text style={styles.h1}>Log in with your credentials.</Text>
+            <Text style={styles.greetingText}>Welcome back! <br /> <Text style={styles.h1}>Log in with your credentials.</Text></Text>
             </View>
 
             <View style={styles.formGroup}>
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
 
     background_header : {
         height: '30vh',
-        backgroundImage : 'url("https://cdn.dribbble.com/users/56226/screenshots/13389754/media/f3fb87ec39b9d13318c2e26704dcf74a.jpg")',
+        backgroundImage : `url(${login_header_image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     },
