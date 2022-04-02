@@ -9,6 +9,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [error, setError] = useState(false)
 
     const handleSubmit = async () => {
         setMessage('');
@@ -31,24 +32,11 @@ const Register = () => {
         }
     }
 
-    const handleInput = e =>{
-        const name = e.currentTarget.name;
-        const value = e.currentTarget.value;
-
-        if(name === 'username') setUsername(value);
-        if( name === 'email') setEmail(value);
-        if(name === 'password') setPassword(value);
-
-        console.log(e.currentTarget)
-
-    }
-
-
     return(
 
         <>    
         <View style={styles.background_header}></View>
-        
+
         <View style={styles.container}>
 
             <View style={styles.message}>

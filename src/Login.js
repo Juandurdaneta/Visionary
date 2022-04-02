@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import API from './API.js'
 import login_header_image from "./images/login_header_image.jpeg"
-
+import { AuthContext, useAuth } from "./auth";
 
 const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [user, setUser] = useState('');
+    const auth = useAuth()
+    const navigate = useNavigate();
+
+    const handleSubmit = async() => {
+        try {
+            const data = await API.authenticate(
+                email,
+                password
+            )
+
+            if(data.status === 200) { 
+                auth.login({ authToken: data.token, username: data.username })
+                navigate('/')
+        }
+            
+
+
+            console.log(data)
+
+        } catch(error){
+            console.log(error)
+        }
+    }
 
     return(
         <>
@@ -19,9 +44,9 @@ const Login = () => {
             </View>
 
             <View style={styles.formGroup}>
-                <TextInput  style={styles.input} placeholder="Email"/>
-                <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true}/>
-            <Button title='Login' color='#046BF1' style={styles.buttonStyle}/>
+                <TextInput  style={styles.input} placeholder="Email" vaule={email} onChangeText={setEmail} />
+                <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword}/>
+            <Button title='Login' color='#046BF1' style={styles.buttonStyle} onPress={handleSubmit}/>
             </View>
             <Text style={styles.paragraph}>If you are new here / <Link style={{color: '#046BF1', textDecoration: 'none'}}to={'/register'}>Sign up now</Link></Text>
 

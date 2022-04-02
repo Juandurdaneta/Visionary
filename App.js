@@ -1,26 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import Login from './src/Login';
 import Register from './src/Register';
-
+import Home from './src/Home'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { RequireAuth } from './src/guards/RequireAuth';
+import { AuthProvider } from './src/auth';
 
 export default function App() {
+
   return (
       <Router>
+        <AuthProvider>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={
+                  <RequireAuth>
+                        <Home />
+                  </RequireAuth>
+          } />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={ <Register /> } />
         </Routes>
+        </AuthProvider>
       </Router>
     );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
