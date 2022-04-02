@@ -9,8 +9,8 @@ const Home = () => {
    return(
        <ScrollView style={styles.containerView}>
            <View style={styles.heroContainer}>
-               <Text style={styles.heroContainerTextHeader} >Hello, {user.username}</Text>
-               <Text style={styles.heroContainerTextParagraph} >Enjoy the latests of our mangas</Text>
+               <Text style={styles.heroContainerTextHeader} >Hello, {user.username}!</Text>
+               <Text style={styles.heroContainerTextParagraph} >Enjoy the latests of <br/>our mangas</Text>
            </View>
        </ScrollView>
        )
@@ -26,15 +26,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#223872',
         color: '#F7F7F7',
         textAlign: 'center',
-        padding: '8%'
+        padding: '8%',
+        margin: '10px',
+        borderRadius: '15px'
     },
     heroContainerTextHeader : {
         fontSize: '1.6rem',
-        color: '#F7F7F7'
+        color: '#F7F7F7',
+        marginBottom: '10px',
+        fontWeight: 600
     },
     heroContainerTextParagraph : {
         color: '#D7D6DB',
-        fontSize: '.7rem'
+        fontSize: '1.2rem'
     }
     
 })
