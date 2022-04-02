@@ -22,12 +22,11 @@ const Login = () => {
 
             if(data.status === 200) { 
                 auth.login({ authToken: data.token, username: data.username })
-                navigate('/')
+                navigate('/', { replace: true })
         }
             
 
 
-            console.log(data)
 
         } catch(error){
             console.log(error)
