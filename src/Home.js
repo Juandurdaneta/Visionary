@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import { Text, ScrollView, View, StyleSheet } from "react-native";
 import { useAuth } from "./auth";
+import Tabs from "./components/Tabs";
 const Home = () => {
 
     const auth = useAuth();
@@ -11,7 +12,13 @@ const Home = () => {
            <View style={styles.heroContainer}>
                <Text style={styles.heroContainerTextHeader} >Hello, {user.username}!</Text>
                <Text style={styles.heroContainerTextParagraph} >Enjoy the latests of <br/>our mangas</Text>
+
+
+
            </View>
+
+           <Tabs />
+
        </ScrollView>
        )
 
