@@ -35,7 +35,7 @@ const Tabs = () => {
 const styles = StyleSheet.create({
     navbar : {
         backgroundColor: '#F7F7F7',
-        position: 'fixed',
+        position: "fixed",
         bottom: 0,
         height: '12vh',
         width: '100%',

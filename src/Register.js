@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
         color: 'gray',
     },
     h1: {
-        fontSize: '1.4rem',
-        fontWeight: '600',
+        fontSize: 20,
+        fontWeight: "600",
         marginBottom: 12
     },
     formGroup : {

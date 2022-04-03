@@ -45,7 +45,7 @@ const Login = () => {
         <View style={styles.container}>
 
             <View style={styles.greeting}>
-            <Text style={styles.greetingText}>Welcome back! <br /> <Text style={styles.h1}>Log in with your credentials.</Text></Text>
+            <Text style={styles.greetingText}>Welcome back! <br /><Text style={styles.h1}>Log in with your credentials.</Text></Text>
             </View>
 
             <View style={styles.formGroup}>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         color: 'gray',
     },
     h1: {
-        fontSize: '1.4rem',
+        fontSize: 20,
         fontWeight: '600',
         marginBottom: 12
     },
