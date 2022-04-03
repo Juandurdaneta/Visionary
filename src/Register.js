@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { View, Text, StyleSheet, TextInput, Button, ImageBackground } from "react-native";
 import { Link } from "react-router-dom";
 import register_header_image from "./images/register_header_image.png"
 import API from './API.js'
@@ -35,7 +35,7 @@ const Register = () => {
     return(
 
         <>    
-        <View style={styles.background_header}></View>
+        <ImageBackground style={styles.background_header} source={register_header_image}></ImageBackground>
 
         <View style={styles.container}>
 
@@ -65,10 +65,7 @@ const styles = StyleSheet.create({
 
 
     background_header : {
-        height: '30vh',
-        backgroundImage : `url(${register_header_image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        height: '30vh'
     },
     container: {
         backgroundColor: '#fff',

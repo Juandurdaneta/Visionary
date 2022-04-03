@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { View, Text, StyleSheet, TextInput, Button, Image, ImageBackground } from "react-native";
 import { Link, useNavigate } from "react-router-dom";
 import API from './API.js'
 import login_header_image from "./images/login_header_image.jpeg"
 import { AuthContext, useAuth } from "./auth";
+import { showMessage } from "react-native-flash-message";
 
 const Login = () => {
 
@@ -23,7 +24,12 @@ const Login = () => {
             if(data.status === 200) { 
                 auth.login({ authToken: data.token, username: data.username })
                 navigate('/', { replace: true })
-        }
+            } else {
+                showMessage({
+                    message: data.message,
+                    type: "danger"
+                })
+            }
             
 
 
@@ -35,7 +41,7 @@ const Login = () => {
 
     return(
         <>
-        <View style={styles.background_header}></View>
+        <ImageBackground source={login_header_image} style={styles.background_header}></ImageBackground>
         <View style={styles.container}>
 
             <View style={styles.greeting}>
@@ -57,10 +63,7 @@ const Login = () => {
 const styles = StyleSheet.create({
 
     background_header : {
-        height: '30vh',
-        backgroundImage : `url(${login_header_image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        height: '30vh'
     },
     container: {
         backgroundColor: '#fff',

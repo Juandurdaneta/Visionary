@@ -4,6 +4,7 @@ import Home from './src/Home'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { RequireAuth } from './src/guards/RequireAuth';
 import { AuthProvider } from './src/auth';
+import FlashMessage from 'react-native-flash-message';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/register" element={ <Register /> } />
         </Routes>
         </AuthProvider>
+        <FlashMessage position="bottom" /> 
       </Router>
     );
 }

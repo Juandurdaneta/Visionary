@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Link } from "react-router-dom";
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaSearch, FaUser } from 'react-icons/fa';
 
 const Tabs = () => {
 
@@ -14,7 +14,19 @@ const Tabs = () => {
                </Link>
            </View>
 
+           <View style={styles.tab}>
+               <Link style={{textDecoration: 'none', color:'red'}}  to={'/'}>
+                    <Text style={styles.icon}><FaSearch /></Text>
+                   <Text>Search</Text>
+               </Link>
+           </View>
          
+           <View style={styles.tab}>
+               <Link style={{textDecoration: 'none', color:'red'}}  to={'/'}>
+                    <Text style={styles.icon}><FaUser /></Text>
+                   <Text>Profile</Text>
+               </Link>
+           </View>
            
        </View>
     )
