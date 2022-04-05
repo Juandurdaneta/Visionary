@@ -4,8 +4,6 @@ import Register from "./src/Register"
 import Login from "./src/Login"
 import FlashMessage from 'react-native-flash-message';
 
-
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {

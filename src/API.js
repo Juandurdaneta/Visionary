@@ -41,7 +41,17 @@ const apiSettings = {
         ).json();
 
         return data;
+    },
+
+    getUser : async() => {
+       const data = await(await fetch(`${API_URL}`, {
+           method: 'GET',
+           headers : { 'Authorization' : `Bearer ${token}`}
+       }));
+
+       return data
     }
+
 }
 
 export default apiSettings;

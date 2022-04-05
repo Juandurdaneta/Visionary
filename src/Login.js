@@ -2,15 +2,18 @@ import React, { useState, useContext } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from "react-native";
 import API from './API.js'
 import login_header_image from "./images/login_header_image.jpeg"
-import { useAuth } from "./auth";
 import { showMessage } from "react-native-flash-message";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useDispatch } from "react-redux";
+import { getUser } from "./redux/ducks/user.js";
 
 const Login = ({ navigation }) => {
+
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [user, setUser] = useState('');
-    const auth = useAuth()
 
 
     const handleSubmit = async() => {
@@ -21,7 +24,9 @@ const Login = ({ navigation }) => {
             )
 
             if(data.status === 200) { 
-                auth.login({ authToken: data.token, username: data.username })
+                
+                await AsyncStorage.setItem('TOKEN', data.token)
+                dispatch(getUser());
 
             } else {
                 showMessage({
