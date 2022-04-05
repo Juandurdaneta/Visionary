@@ -47,7 +47,7 @@ const apiSettings = {
     getUser : async() => {
        const token = await AsyncStorage.getItem('TOKEN')
 
-       const data = await(await fetch(`${API_URL}`, {
+       const data = await(await fetch(`${API_URL}/users`, {
            method: 'GET',
            headers : { 'Authorization' : `Bearer ${token}`}
        }));
