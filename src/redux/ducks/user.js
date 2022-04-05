@@ -1,5 +1,6 @@
 const SET_USER = "SET_USER";
 export const GET_USER = "GET_USER";
+export const SET_RESPONSE = "SET_RESPONSE";
 
 export const getUser = () => ({
     type: GET_USER

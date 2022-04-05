@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga'
 import { watcherSaga } from "./sagas/rootSaga";
 import userReducer from './ducks/user'
