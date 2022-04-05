@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from "react-native";;
 import register_header_image from "./images/register_header_image.png";
 import API from './API.js';
-
+import { showMessage } from "react-native-flash-message";
 
 const Register = ({ navigation }) => {
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
     const [error, setError] = useState(false)
 
     const handleSubmit = async () => {
-        setMessage('');
+        setError(false);
         try {
+            
             const data = await API.createUser(
                 username,
                 email,
@@ -23,12 +23,21 @@ const Register = ({ navigation }) => {
 
             console.log(data);
             
-            setMessage(data.message)
-
-            if(data.status === 200) {setUsername('') ; setEmail(''); setPassword('')}
+            if(data.status === 200) {
+                setUsername('') ; setEmail(''); setPassword('')
+                showMessage({
+                    message: data.message,
+                    type: "success"
+                })
+            } else {
+                showMessage({
+                    message: data.message,
+                    type: "danger"
+                })
+            }
 
         } catch(error) {
-            setMessage(error);
+            setError(true);
             console.log(error);
         }
     }
