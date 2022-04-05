@@ -50,7 +50,10 @@ const apiSettings = {
        const data = await(await fetch(`${API_URL}/users`, {
            method: 'GET',
            headers : { 'Authorization' : `Bearer ${token}`}
-       }));
+       })
+       ).json();
+
+       console.log(data)
 
        return data
     }
