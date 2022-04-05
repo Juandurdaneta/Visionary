@@ -1,28 +1,21 @@
-import Login from './src/Login';
-import Register from './src/Register';
-import Home from './src/Home'
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { RequireAuth } from './src/guards/RequireAuth';
-import { AuthProvider } from './src/auth';
-import FlashMessage from 'react-native-flash-message';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Register from "./src/Register"
+import Login from "./src/Login"
+
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
   return (
-      <Router>
-        <AuthProvider>
-        <Routes>
-          <Route path="/" element={
-                  <RequireAuth>
-                        <Home />
-                  </RequireAuth>
-          } />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={ <Register /> } />
-        </Routes>
-        </AuthProvider>
-        <FlashMessage position="bottom" /> 
-      </Router>
+      <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Register" headerBackTitleVisible={false} component={Register} options={{headerShown: false}}></Stack.Screen> 
+            <Stack.Screen name="Login" headerBackTitleVisible={false} component={Login} options={{headerShown: false}}></Stack.Screen>   
+          </Stack.Navigator>      
+      </NavigationContainer>
     );
 }
 

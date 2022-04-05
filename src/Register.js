@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Button, ImageBackground } from "react-native";
-import { Link } from "react-router-dom";
-import register_header_image from "./images/register_header_image.png"
-import API from './API.js'
-const Register = () => {
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from "react-native";;
+import register_header_image from "./images/register_header_image.png";
+import API from './API.js';
+
+
+const Register = ({ navigation }) => {
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -39,21 +40,20 @@ const Register = () => {
 
         <View style={styles.container}>
 
-            <View style={styles.message}>
-                {!!message && <Text>{message}</Text>}
-            </View>
 
             <View style={styles.greeting}>
-                    <Text style={styles.greetingText}>Welcome! <br/><Text style={styles.h1}>Join our community today.</Text></Text>
+                    <Text style={styles.greetingText}>Welcome! </Text><Text style={styles.h1}>Join our community today.</Text>
                 </View>
 
                 <View style={styles.formGroup}>
                     <TextInput  style={styles.input} placeholder="Email" value={email} onChangeText={setEmail}  />
                     <TextInput  style={styles.input} placeholder="Username" value={username} onChangeText={setUsername}  />
                     <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword}  />
-                <Button title='Sign Up' color='#046BF1' style={styles.buttonStyle} onPress={handleSubmit}/>
+                <TouchableOpacity  style={styles.buttonStyle} onPress={handleSubmit}>
+                    <Text style={{ color: "white", textAlign: 'center' }}>Sign up</Text>
+                </TouchableOpacity>
                 </View>
-                <Text style={styles.paragraph}>Already have an account? / <Link to={'/'}>Log in</Link></Text>
+                <Text style={styles.paragraph}>Already have an account? / <Text onPress={() => navigation.navigate('Login')}>Login</Text> </Text>
 
         </View>
         </>
@@ -65,26 +65,26 @@ const styles = StyleSheet.create({
 
 
     background_header : {
-        height: '30vh'
+        height: 250
     },
     container: {
         backgroundColor: '#fff',
         padding: '6%',
       },
       greeting: {
-        marginTop: '1rem',
+        marginTop: 0,
     },
     greetingText: {
-        marginTop: '.5rem',
+        marginTop: 10,
         color: 'gray',
     },
     h1: {
         fontSize: 20,
         fontWeight: "600",
-        marginBottom: 12
+        marginBottom: 12,
     },
     formGroup : {
-        marginTop: '1rem'
+        marginTop: 10
     },
     input: {
         height: 50,
@@ -94,9 +94,10 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     buttonStyle : {
-        margin: 100,
-        borderRadius: 24
-    },
+        borderRadius: 8,
+        backgroundColor: '#046BF1',
+        padding: 15,
+        },
     paragraph : {
         marginTop : 15,
         color: 'gray'

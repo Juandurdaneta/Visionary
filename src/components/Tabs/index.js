@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-native";
 import { FaHome, FaSearch, FaUser } from 'react-icons/fa';
 
 const Tabs = () => {
