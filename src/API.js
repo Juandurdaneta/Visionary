@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     API_URL
 } from './config'
@@ -44,6 +45,8 @@ const apiSettings = {
     },
 
     getUser : async() => {
+       const token = await AsyncStorage.getItem('TOKEN')
+
        const data = await(await fetch(`${API_URL}`, {
            method: 'GET',
            headers : { 'Authorization' : `Bearer ${token}`}

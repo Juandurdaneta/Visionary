@@ -22,9 +22,10 @@ const Login = ({ navigation }) => {
                 email,
                 password
             )
+            console.log(data)
 
             if(data.status === 200) { 
-                
+                console.log(data.token)
                 await AsyncStorage.setItem('TOKEN', data.token)
                 dispatch(getUser());
 
