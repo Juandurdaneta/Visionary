@@ -46,12 +46,15 @@ const Register = ({ navigation }) => {
                 </View>
 
                 <View style={styles.formGroup}>
+                    
                     <TextInput  style={styles.input} placeholder="Email" value={email} onChangeText={setEmail}  />
                     <TextInput  style={styles.input} placeholder="Username" value={username} onChangeText={setUsername}  />
                     <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword}  />
-                <TouchableOpacity  style={styles.buttonStyle} onPress={handleSubmit}>
-                    <Text style={{ color: "white", textAlign: 'center' }}>Sign up</Text>
-                </TouchableOpacity>
+
+                    <TouchableOpacity  style={styles.buttonStyle} onPress={handleSubmit}>
+                        <Text style={{ color: "white", textAlign: 'center' }}>Sign up</Text>
+                    </TouchableOpacity>
+
                 </View>
                 <Text style={styles.paragraph}>Already have an account? / <Text onPress={() => navigation.navigate('Login')}>Login</Text> </Text>
 

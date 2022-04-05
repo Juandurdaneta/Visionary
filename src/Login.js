@@ -48,9 +48,11 @@ const Login = ({ navigation }) => {
                 <View style={styles.formGroup}>
                     <TextInput  style={styles.input} placeholder="Email" vaule={email} onChangeText={setEmail} />
                     <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword}/>
+
                     <TouchableOpacity  style={styles.buttonStyle} onPress={handleSubmit}>
                         <Text style={{ color: "white", textAlign: 'center' }}>Log In</Text>
                     </TouchableOpacity>
+                    
                 </View>
                     <Text style={styles.paragraph}>If you are new here / Sign up now</Text>
 
