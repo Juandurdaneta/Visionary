@@ -46,7 +46,7 @@ const Register = ({ navigation }) => {
                 </View>
 
                 <View style={styles.formGroup}>
-                    
+
                     <TextInput  style={styles.input} placeholder="Email" value={email} onChangeText={setEmail}  />
                     <TextInput  style={styles.input} placeholder="Username" value={username} onChangeText={setUsername}  />
                     <TextInput style={styles.input}  placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword}  />
@@ -56,7 +56,7 @@ const Register = ({ navigation }) => {
                     </TouchableOpacity>
 
                 </View>
-                <Text style={styles.paragraph}>Already have an account? / <Text onPress={() => navigation.navigate('Login')}>Login</Text> </Text>
+                <Text style={styles.paragraph}>Already have an account? / <Text style={{ color: '#223872'}} onPress={() => navigation.navigate('Login')}>Login</Text> </Text>
 
         </View>
         </>
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
         height: 250
     },
     container: {
-        backgroundColor: '#fff',
         padding: '6%',
       },
       greeting: {
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
     },
     buttonStyle : {
         borderRadius: 8,
-        backgroundColor: '#046BF1',
+        backgroundColor: '#223872',
         padding: 15,
         },
     paragraph : {

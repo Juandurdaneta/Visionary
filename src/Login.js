@@ -52,9 +52,9 @@ const Login = ({ navigation }) => {
                     <TouchableOpacity  style={styles.buttonStyle} onPress={handleSubmit}>
                         <Text style={{ color: "white", textAlign: 'center' }}>Log In</Text>
                     </TouchableOpacity>
-                    
+
                 </View>
-                    <Text style={styles.paragraph}>If you are new here / Sign up now</Text>
+                    <Text style={styles.paragraph}>If you are new here /  <Text style={{ color: '#223872'}} onPress={() => navigation.navigate('Register')}>Sign up now</Text></Text>
 
             </View>
         </>
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
         height: 250
     },
     container: {
-        backgroundColor: '#fff',
         padding: '8%',
       },
       greeting: {
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
     },
     buttonStyle : {
         borderRadius: 8,
-        backgroundColor: '#046BF1',
+        backgroundColor: '#223872',
         padding: 15,
         },
     paragraph : {
