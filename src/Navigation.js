@@ -26,7 +26,9 @@ export default function Navigation(){
     return (
         <NavigationContainer>
         {!!user ? (
-          <h1>Hello world</h1>     
+            <Tab.Navigator>
+                <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
+            </Tab.Navigator>
         ): (
            <Stack.Navigator>
             <Stack.Screen name="Register" headerBackTitleVisible={false} component={Register} options={{headerShown: false}}></Stack.Screen> 
