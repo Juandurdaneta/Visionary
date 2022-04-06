@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Text, ScrollView, View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "./redux/ducks/user"; 
+import { getUser } from "../redux/ducks/user"; 
 const Home = () => {
 
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const Home = () => {
    return(
        <ScrollView style={styles.containerView}>
            <View style={styles.heroContainer}>
-               <Text style={styles.heroContainerTextHeader} >Hello!, {user.username}</Text>
+               <Text style={styles.heroContainerTextHeader} >Hello, {user.username}!</Text>
                <Text style={styles.heroContainerTextParagraph} >Enjoy the latests of our mangas</Text>
 
 

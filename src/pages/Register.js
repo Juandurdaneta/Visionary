@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from "react-native";;
-import register_header_image from "./images/register_header_image.png";
-import API from './API.js';
+import register_header_image from "../images/register_header_image.png";
+import API from '../API';
 import { showMessage } from "react-native-flash-message";
 
 const Register = ({ navigation }) => {

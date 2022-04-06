@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from "react-native";
-import API from './API.js'
-import login_header_image from "./images/login_header_image.jpeg"
+import API from '../API.js'
+import login_header_image from "../images/login_header_image.jpeg"
 import { showMessage } from "react-native-flash-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
-import { getUser } from "./redux/ducks/user.js";
+import { getUser } from "../redux/ducks/user.js";
 
 const Login = ({ navigation }) => {
 

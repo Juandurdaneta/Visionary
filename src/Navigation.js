@@ -8,9 +8,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./redux/ducks/user";
 // pages
-import Home from "./Home";
-import Register from "./Register"
-import Login from "./Login"
+import Home from "./pages/Home";
+import Register from "./pages/Register"
+import Login from "./pages/Login"
 // navigators
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
