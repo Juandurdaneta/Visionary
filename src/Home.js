@@ -1,11 +1,7 @@
-import React, {useContext} from "react";
+import React from "react";
 import { Text, ScrollView, View, StyleSheet } from "react-native";
-import { useAuth } from "./auth";
-// import Tabs from "./components/Tabs";
-const Home = () => {
 
-    const auth = useAuth();
-    const user = auth.user;
+const Home = () => {
 
    return(
        <ScrollView style={styles.containerView}>
@@ -17,7 +13,6 @@ const Home = () => {
 
            </View>
 
-           {/* <Tabs /> */}
 
        </ScrollView>
        )

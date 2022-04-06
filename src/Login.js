@@ -37,7 +37,10 @@ const Login = ({ navigation }) => {
             }
 
         } catch(error){
-            console.log(error)
+            showMessage({
+                message: 'Error: '+error.message,
+                type: "danger"
+            })
         }
     }
 
