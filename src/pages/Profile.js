@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { getUser } from "../redux/ducks/user"; 
 import { useDispatch, useSelector } from "react-redux";
-import { ScrollView, Text, Image, StyleSheet , View} from "react-native";
+import { ScrollView, Text, Image, StyleSheet , View, TouchableOpacity} from "react-native";
 import { BsPencil } from 'react-icons/bs'
 
 const Profile = () => {
@@ -18,7 +18,10 @@ const Profile = () => {
            <View style={styles.headerProfileImage}>
             <Image source={user && user.profileImage} style={styles.profilePicture} />
             <View style={styles.headerProfileUser}> 
-                <Text style={styles.username}>{ user.username }  </Text><Text style={styles.pencilIcon}> <BsPencil /> </Text> 
+                <Text style={styles.username}>{ user.username }  </Text>
+                <TouchableOpacity  style={styles.buttonStyle} >
+                        <Text style={{ textAlign: 'center', color: 'gray'}}>Edit Profile</Text>
+                </TouchableOpacity>
             </View>
            </View>
 
@@ -50,9 +53,7 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 10
     },
-    headerProfileUser : {
-        flexDirection: "row"
-    },
+
     username : {
         fontSize: 20,
         fontWeight: 600
@@ -61,7 +62,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 10,
         marginTop: 5
-    }
+    },
+
+    buttonStyle : {
+        borderRadius: 5,
+        padding: 6,
+        borderColor: 'gray',
+        borderWidth: 2,
+        margin: 10
+        },
 
 })
 
