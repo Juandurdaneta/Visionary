@@ -14,6 +14,8 @@ import Login from "./pages/Login"
 import Profile from "./pages/Profile";
 // theme
 import visionaryTheme from "./theme/visionaryTheme";
+import MenuComponent from "./components/MenuComponent";
+import { MenuProvider } from "react-native-popup-menu";
 
 // navigators
 const Stack = createNativeStackNavigator();
@@ -30,19 +32,20 @@ export default function Navigation(){
     return (
         <NavigationContainer theme={visionaryTheme}>
             {!!user ? (
-                <Tab.Navigator
-                    screenOptions={({ route }) => ({
-                        headerLeft: () =>{
-
-                        },
-                        headerTitleAlign: "center",
-                        cardStyle: {backgroundColor: 'red' }
-                    })}
-                >
-                    <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
-                    <Tab.Screen name="My profile" component={Profile} />
-                </Tab.Navigator>
-
+                <MenuProvider>
+                    <Tab.Navigator
+                        screenOptions={({ route }) => ({
+                            headerRight: () =>(
+                                <MenuComponent />
+                            ),
+                            headerTitleAlign: "center",
+                            headerShadowVisible: false, 
+                        })}
+                    >
+                        <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
+                        <Tab.Screen name="My profile" component={Profile} />
+                    </Tab.Navigator>
+                </MenuProvider>
             ): (
             <Stack.Navigator>
                 <Stack.Screen name="Register" headerBackTitleVisible={false} component={Register} options={{headerShown: false}}></Stack.Screen> 

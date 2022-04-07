@@ -21,6 +21,12 @@ const Profile = () => {
                 <Text style={styles.username}>{ user.username }  </Text><Text style={styles.pencilIcon}> <BsPencil /> </Text> 
             </View>
            </View>
+
+
+           <View>
+
+               
+           </View>
        </ScrollView>
     );
 
