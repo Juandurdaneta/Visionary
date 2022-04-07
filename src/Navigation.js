@@ -11,6 +11,10 @@ import { getUser } from "./redux/ducks/user";
 import Home from "./pages/Home";
 import Register from "./pages/Register"
 import Login from "./pages/Login"
+import Profile from "./pages/Profile";
+// theme
+import visionaryTheme from "./theme/visionaryTheme";
+
 // navigators
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,18 +28,28 @@ export default function Navigation(){
     }, [])
 
     return (
-        <NavigationContainer>
-        {!!user ? (
-            <Tab.Navigator>
-                <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
-            </Tab.Navigator>
-        ): (
-           <Stack.Navigator>
-            <Stack.Screen name="Register" headerBackTitleVisible={false} component={Register} options={{headerShown: false}}></Stack.Screen> 
-            <Stack.Screen name="Login" headerBackTitleVisible={false} component={Login} options={{headerShown: false}}></Stack.Screen>   
-           </Stack.Navigator>
-        )}
-        <FlashMessage position="bottom" />
+        <NavigationContainer theme={visionaryTheme}>
+            {!!user ? (
+                <Tab.Navigator
+                    screenOptions={({ route }) => ({
+                        headerLeft: () =>{
+
+                        },
+                        headerTitleAlign: "center",
+                        cardStyle: {backgroundColor: 'red' }
+                    })}
+                >
+                    <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
+                    <Tab.Screen name="My profile" component={Profile} />
+                </Tab.Navigator>
+
+            ): (
+            <Stack.Navigator>
+                <Stack.Screen name="Register" headerBackTitleVisible={false} component={Register} options={{headerShown: false}}></Stack.Screen> 
+                <Stack.Screen name="Login" headerBackTitleVisible={false} component={Login} options={{headerShown: false}}></Stack.Screen>   
+            </Stack.Navigator>
+            )}
+            <FlashMessage position="bottom" />
         </NavigationContainer>
     )
 
