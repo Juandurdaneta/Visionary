@@ -11,7 +11,7 @@ const ModalContainer = ({visible, title, Component, onModalClose}) =>{
     return(
         <Modal visible={visible} animationType="slide">
             <View style={{ flexDirection:"row", alignItems:"center" }}>
-                <AiOutlineCloseCircle onPress={closeModal} style={{ margin: 10 }} />
+                <AiOutlineCloseCircle style={{ margin: 10 }} />
                 <Text style={{ fontSize: 22 }}>{title}</Text>
             </View>
             <>
