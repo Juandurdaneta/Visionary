@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TextInput, View, StyleSheet, Image } from "react-native";
+import { Text, TextInput, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 
 const UserForm = ({title, user}) =>{
@@ -45,6 +45,14 @@ const UserForm = ({title, user}) =>{
                 style={styles.formTextInput}
             />
 
+            <TouchableOpacity style={styles.updateUserButton}>
+                <Text style={{ textAlign: 'center', color: 'white'}}>Update user</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.deleteUserButton}>
+                <Text style={{ textAlign: 'center', color: 'red'}}>Delete user</Text>
+            </TouchableOpacity>
+
         </View>
     )
 }
@@ -69,6 +77,19 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginBottom: 25,
+    },
+    updateUserButton : {
+        padding: 15,
+        backgroundColor: "#223872",
+        borderRadius: 8,
+        marginBottom: 15
+    },
+    deleteUserButton : {
+        padding: 8,
+        borderColor: "red",
+        borderRadius: 8,
+        marginBottom: 10,
+        borderWidth: 1
     }
 })
 

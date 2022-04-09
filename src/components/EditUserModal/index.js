@@ -29,12 +29,6 @@ const EditUserModal = ({visible, onModalClose}) =>{
                 <ScrollView>
                     <Card>
                         <UserForm onDataChange={setUserEditedData} title="Edit profile" user={user} />
-                        <TouchableOpacity  >
-                            <Text style={{ textAlign: 'center', color: 'gray'}}>Update user</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity  >
-                            <Text style={{ textAlign: 'center', color: 'gray'}}>Delete user</Text>
-                        </TouchableOpacity>
                     </Card>
                 </ScrollView>
             }
