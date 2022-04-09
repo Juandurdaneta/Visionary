@@ -7,7 +7,7 @@ const UserForm = ({title, user}) =>{
     const [username, setUsername] = useState(user ? user.username : "")
     const [email, setEmail] = useState(user ? user.email : "")
     const [password, setPassword] = useState("")
-
+    
 
     return(
         <View>

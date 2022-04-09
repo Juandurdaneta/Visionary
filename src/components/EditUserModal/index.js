@@ -7,7 +7,7 @@ import { getUser } from "../../redux/ducks/user";
 import { useDispatch, useSelector } from "react-redux";
 
 
-const EditUserModal = ({visible}) =>{
+const EditUserModal = ({visible, onModalClose}) =>{
 
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user)
@@ -37,6 +37,7 @@ const EditUserModal = ({visible}) =>{
                     </Card>
                 </ScrollView>
             }
+            onModalClose={onModalClose}
             />
 
         </>

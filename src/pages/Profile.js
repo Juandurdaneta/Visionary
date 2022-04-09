@@ -9,7 +9,6 @@ const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user)
     const [profileEditModal, setProfileEditModal] = useState(false);
-
     useEffect(()=>{
         dispatch(getUser())
     }, [])
@@ -17,7 +16,7 @@ const Profile = () => {
     return(
        <ScrollView style={styles.container}>
 
-            <EditUserModal visible={profileEditModal} />
+            <EditUserModal visible={profileEditModal} onModalClose={setProfileEditModal} />
 
            <View style={styles.headerProfileImage}>
 
