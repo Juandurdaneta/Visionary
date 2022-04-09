@@ -53,7 +53,6 @@ const apiSettings = {
        })
        ).json();
 
-       console.log(data)
 
        return data
     }

@@ -16,17 +16,20 @@ const Profile = () => {
     return(
        <ScrollView style={styles.container}>
 
-            <EditUserModal visible={profileEditModal} onModalClose={setProfileEditModal} />
+        <EditUserModal visible={profileEditModal} onModalClose={setProfileEditModal} />
 
            <View style={styles.headerProfileImage}>
 
             <Image source={user && user.profileImage} style={styles.profilePicture} />
 
                 <View style={styles.headerProfileUser}> 
+
                     <Text style={styles.username}>{ user.username }  </Text>
+                    
                     <TouchableOpacity  style={styles.buttonStyle} onPress={setProfileEditModal} >
                             <Text style={{ textAlign: 'center', color: 'gray'}}>Edit Profile</Text>
                     </TouchableOpacity>
+
                 </View>
 
            </View>

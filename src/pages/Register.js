@@ -21,7 +21,6 @@ const Register = ({ navigation }) => {
                 password
             );
 
-            console.log(data);
             
             if(data.status === 200) {
                 setUsername('') ; setEmail(''); setPassword('')
