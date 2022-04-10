@@ -59,14 +59,13 @@ const apiSettings = {
 
     updateUser : async(username, email) =>{
 
-       const token = await AsyncStorage.getItem('TOKEN')
+       const token = await AsyncStorage.getItem('TOKEN');
 
         const bodyData = {
             username,
             email
         };
 
-        console.log(bodyData)
 
         const data = await(
             await fetch(`${API_URL}/users`, {
@@ -74,6 +73,20 @@ const apiSettings = {
                 headers : { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json'},
                 body: JSON.stringify(bodyData)
             })
+        ).json();
+
+        return data;
+
+    },
+
+    deleteUser : async() => {
+
+       const token = await AsyncStorage.getItem('TOKEN');
+
+        const data = await(await fetch(`${API_URL}/users`, {
+            method: 'DELETE',
+            headers : { 'Authorization' : `Bearer ${token}`}
+        })
         ).json();
 
         return data;

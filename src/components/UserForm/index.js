@@ -42,9 +42,7 @@ const UserForm = ({title, user, callback}) =>{
                 <Text style={{ textAlign: 'center', color: 'white'}}>Update profile</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.deleteUserButton}>
-                <Text style={{ textAlign: 'center', color: 'red'}}>Delete profile</Text>
-            </TouchableOpacity>
+         
 
         </View>
     )
@@ -76,13 +74,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#223872",
         borderRadius: 8,
         marginBottom: 15
-    },
-    deleteUserButton : {
-        padding: 8,
-        borderColor: "red",
-        borderRadius: 8,
-        marginBottom: 10,
-        borderWidth: 1
     }
 })
 
