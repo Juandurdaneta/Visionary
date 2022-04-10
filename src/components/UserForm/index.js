@@ -1,13 +1,40 @@
 import React, { useState } from "react";
 import { Text, TextInput, View, StyleSheet, Image, TouchableOpacity } from "react-native";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import API from "../../API";
+import { useDispatch } from "react-redux";
+import { getUser } from "../../redux/ducks/user";
 
 const UserForm = ({title, user}) =>{
 
     const [username, setUsername] = useState(user ? user.username : "")
     const [email, setEmail] = useState(user ? user.email : "")
     const [password, setPassword] = useState("")
+
+    const dispatch = useDispatch();
     
+    const handleSubmit = async() =>{
+        try{
+            const data = await API.updateUser(
+                username,
+                email
+            )
+
+            console.log(data)
+
+            if(data.status == 200) {
+                console.log(data.token)
+                await AsyncStorage.setItem("TOKEN", data.token)
+
+                dispatch(getUser());
+            } else {
+                console.log('oh no')
+            }
+
+        } catch(err){
+            console.log(err)
+        }
+    }
 
     return(
         <View >
@@ -35,22 +62,13 @@ const UserForm = ({title, user}) =>{
                 style={styles.formTextInput}
             />
 
-            <Text style={styles.labelText} >Password</Text>
-            <TextInput 
-                textContentType="password"
-                secureTextEntry={true}
-                placeholder="Password"
-                placeholderTextColor="gray"
-                onChangeText={setPassword}
-                style={styles.formTextInput}
-            />
-
-            <TouchableOpacity style={styles.updateUserButton}>
-                <Text style={{ textAlign: 'center', color: 'white'}}>Update user</Text>
+           
+            <TouchableOpacity style={styles.updateUserButton} onPress={handleSubmit}>
+                <Text style={{ textAlign: 'center', color: 'white'}}>Update profile</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.deleteUserButton}>
-                <Text style={{ textAlign: 'center', color: 'red'}}>Delete user</Text>
+                <Text style={{ textAlign: 'center', color: 'red'}}>Delete profile</Text>
             </TouchableOpacity>
 
         </View>
