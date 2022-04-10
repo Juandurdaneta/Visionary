@@ -25,6 +25,8 @@ const Profile = () => {
                 <View style={styles.headerProfileUser}> 
 
                     <Text style={styles.username}>{ user.username }  </Text>
+                    <Text style={styles.email}>{ user.email }  </Text>
+
                     
                     <TouchableOpacity  style={styles.buttonStyle} onPress={setProfileEditModal} >
                             <Text style={{ textAlign: 'center', color: 'gray'}}>Edit Profile</Text>
@@ -62,6 +64,10 @@ const styles = StyleSheet.create({
     username : {
         fontSize: 20,
         fontWeight: 600
+    },
+    email:{
+        fontSize: 15,
+        color: "gray" 
     },
     pencilIcon : {
         fontSize: 16,
