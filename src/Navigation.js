@@ -16,7 +16,7 @@ import Profile from "./pages/Profile";
 import visionaryTheme from "./theme/visionaryTheme";
 import MenuComponent from "./components/MenuComponent";
 import { MenuProvider } from "react-native-popup-menu";
-
+import { AiOutlineHome, AiFillHome, AiOutlineUser } from 'react-icons/ai'
 // navigators
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,10 +40,21 @@ export default function Navigation(){
                             ),
                             headerTitleAlign: "center",
                             headerShadowVisible: false, 
+                            
+                            tabBarIcon : ({focused, color, size}) =>{
+                                let iconName;
+                                if(route.name === 'Home') {
+                                    iconName = focused ? <AiFillHome size={size} color={color} /> : <AiOutlineHome size={size} color={color} />;
+                                    return iconName
+                                }
+                                if(route.name === 'Profile') {
+                                    return <AiOutlineUser size={size} color={color}/>
+                                }
+                            }
                         })}
                     >
                         <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
-                        <Tab.Screen name="My profile" component={Profile} />
+                        <Tab.Screen name="Profile" component={Profile} />
                     </Tab.Navigator>
                 </MenuProvider>
             ): (
