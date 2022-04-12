@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 // API
 import API from "../API";
 
-const initialState = {
-}
+const initialState = []
+
 
 export const useHomeFetch = () =>{
     const [state, setState] = useState(initialState);
@@ -17,9 +17,9 @@ export const useHomeFetch = () =>{
 
             const mangas = await API.getMangas();
 
-            setState((prev) =>({
+            setState((prev) =>([
                 ...mangas.foundMangas,
-            }));
+            ]));
 
         } catch(error){
             setError(true);
