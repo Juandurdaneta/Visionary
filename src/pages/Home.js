@@ -1,8 +1,14 @@
 import React, { useEffect } from "react";
 import { Text, ScrollView, View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import { useHomeFetch } from "../Hooks/useHomeFetch";
 import { getUser } from "../redux/ducks/user"; 
+
 const Home = () => {
+    const { state } = useHomeFetch();
+
+    console.log(state);
+
 
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user)
