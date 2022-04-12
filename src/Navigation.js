@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FlashMessage from "react-native-flash-message";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { HeaderBackButton } from '@react-navigation/elements';
 // react / redux
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,6 +37,7 @@ export default function Navigation(){
             {!!user ? (
                 <MenuProvider>
                     <Tab.Navigator
+                    
                         screenOptions={({ route }) => ({
                             headerRight: () =>(
                                route.name == 'Profile' && <MenuComponent />
@@ -57,12 +59,13 @@ export default function Navigation(){
                     >
                         <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
                         <Tab.Screen name="Profile" component={Profile} />
-                        <Tab.Screen name="Manga Details" component={MangaDetails} options={({route}) => ({
+                        <Tab.Screen name="Manga Details" component={MangaDetails} options={({route, navigation}) => ({
                             tabBarButton: () => (
                                 <View style={{width:0, height:0}}></View>
                             ),
                             tabBarVisible:false,
-                            title: route.params ? route.params.name : "Hello world"
+                            title: route.params ? route.params.name : "Hello world",
+                            headerLeft: () => (<HeaderBackButton onPress={() => navigation.goBack(null)}/>)
                         })}/>
                     </Tab.Navigator>
                 </MenuProvider>

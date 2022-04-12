@@ -3,7 +3,7 @@ import { Text } from "react-native";
 
 const MangaDetails = () =>{
     return(
-        <Text>Hello world</Text>
+        <Text></Text>
     )
 }
 
