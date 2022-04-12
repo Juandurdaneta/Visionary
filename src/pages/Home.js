@@ -6,7 +6,7 @@ import MangaPoster from "../components/MangaPoster";
 import { useHomeFetch } from "../Hooks/useHomeFetch";
 import { getUser } from "../redux/ducks/user"; 
 
-const Home = () => {
+const Home = ({navigation}) => {
     const { state, loading } = useHomeFetch();
 
     console.log(state);
@@ -26,10 +26,10 @@ const Home = () => {
                <Text style={styles.heroContainerTextParagraph} >Enjoy the latests of our mangas</Text>
            </View>
 
-        <View style={styles.bodyContainer}>
+        <View style={styles.bodyContainer}  >
            <MangaGrid>
                {state.map((manga, index) =>(
-                   <MangaPoster manga={manga} key={index}/>
+                   <MangaPoster manga={manga} key={index} navigation={navigation}/>
                ))}
            </MangaGrid>
         </View>

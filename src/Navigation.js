@@ -12,11 +12,13 @@ import Home from "./pages/Home";
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile";
+import MangaDetails from "./pages/MangaDetails";
 // theme
 import visionaryTheme from "./theme/visionaryTheme";
 import MenuComponent from "./components/MenuComponent";
 import { MenuProvider } from "react-native-popup-menu";
 import { AiOutlineHome, AiFillHome, AiOutlineUser } from 'react-icons/ai'
+import { View } from "react-native";
 // navigators
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,7 +38,7 @@ export default function Navigation(){
                     <Tab.Navigator
                         screenOptions={({ route }) => ({
                             headerRight: () =>(
-                                <MenuComponent />
+                               route.name == 'Profile' && <MenuComponent />
                             ),
                             headerTitleAlign: "center",
                             headerShadowVisible: false, 
@@ -55,6 +57,12 @@ export default function Navigation(){
                     >
                         <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
                         <Tab.Screen name="Profile" component={Profile} />
+                        <Tab.Screen name="Manga Details" component={MangaDetails} options={{
+                            tabBarButton: () => (
+                                <View style={{width:0, height:0}}></View>
+                            ),
+                            tabBarVisible:false //hide tab bar on this screen
+                        }}/>
                     </Tab.Navigator>
                 </MenuProvider>
             ): (
