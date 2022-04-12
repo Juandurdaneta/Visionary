@@ -57,12 +57,13 @@ export default function Navigation(){
                     >
                         <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
                         <Tab.Screen name="Profile" component={Profile} />
-                        <Tab.Screen name="Manga Details" component={MangaDetails} options={{
+                        <Tab.Screen name="Manga Details" component={MangaDetails} options={({route}) => ({
                             tabBarButton: () => (
                                 <View style={{width:0, height:0}}></View>
                             ),
-                            tabBarVisible:false //hide tab bar on this screen
-                        }}/>
+                            tabBarVisible:false,
+                            title: route.params ? route.params.name : "Hello world"
+                        })}/>
                     </Tab.Navigator>
                 </MenuProvider>
             ): (
