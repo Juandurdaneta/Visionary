@@ -27,7 +27,6 @@ export const useMangaFetch = mangaId => {
 
     }, [mangaId]);
 
-    console.log(state)
 
 
     return {state, loading, error}

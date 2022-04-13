@@ -9,7 +9,6 @@ import { getUser } from "../redux/ducks/user";
 const Home = ({navigation}) => {
     const { state, loading } = useHomeFetch();
 
-    console.log(state);
 
 
     const dispatch = useDispatch();
