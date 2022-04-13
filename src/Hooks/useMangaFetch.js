@@ -13,7 +13,7 @@ export const useMangaFetch = mangaId => {
                 setError(false);
 
                 const manga = await API.getManga(mangaId);
-                setState(manga);
+                setState(manga[0]);
 
                 setLoading(false);
 
@@ -24,9 +24,10 @@ export const useMangaFetch = mangaId => {
         };
 
         fetchManga();
-        console.log(state)
 
     }, [mangaId]);
+
+    console.log(state)
 
 
     return {state, loading, error}
