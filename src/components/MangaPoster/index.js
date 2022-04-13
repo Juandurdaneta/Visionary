@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
 const MangaPoster = ({manga, navigation}) =>{
     return(
-        <TouchableOpacity onPress={() => navigation.navigate('Manga Details', { name : manga.title})}>
+        <TouchableOpacity onPress={() => navigation.navigate('Manga Details', { name : manga.title, id: manga.mangaId})}>
             <Image source={manga && manga.poster} style={styles.mangaPoster} />
         </TouchableOpacity>
     )

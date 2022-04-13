@@ -100,6 +100,11 @@ const apiSettings = {
         return await (await fetch(endpoint)).json();
 
 
+    },
+
+    getManga : async(id) =>{
+        const endpoint = `${API_URL}/manga/${id}`;
+        return await (await fetch(endpoint)).json();
     }
 
 }
