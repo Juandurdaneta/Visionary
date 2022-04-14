@@ -38,11 +38,39 @@ const FollowButton = ({isFollowing, mangaId, setFollow}) => {
         }
     }
 
+    const unfollowManga = async() =>{
+        try{
+            const data = await API.unfollowManga(mangaId);
+
+            if(data.status === 200) {
+                setFollow(false);
+                await AsyncStorage.setItem("TOKEN", data.token);
+                dispatch(getUser());
+                showMessage({
+                    message: 'Manga unfollowed',
+                    type: "success"
+                });
+            } else {
+                showMessage({
+                    message: data.message,
+                    type: "danger"
+                });
+            }
+
+        }catch(error){
+          showMessage({
+                message: 'Error: '+ error.message,
+                type: "danger"
+            });
+
+        }
+    }
+
     return(
         <>
             {
               isFollowing ? 
-                <TouchableOpacity style={styles.unfollowButton}>
+                <TouchableOpacity style={styles.unfollowButton} onPress={unfollowManga}>
                     <Text style={{ color: "#223872", textAlign: 'center' }}> Unfollow </Text>
                 </TouchableOpacity>
                 :
