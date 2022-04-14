@@ -1,14 +1,23 @@
-import React from "react"
-import { Image, ScrollView, Text, View, StyleSheet, ActivityIndicator } from "react-native";
+import React, { useEffect, useState } from "react"
+import { Image, ScrollView, Text, View, StyleSheet, ActivityIndicator, TouchableOpacity } from "react-native";
 import { useMangaFetch } from "../Hooks/useMangaFetch";
 import { toLocaleDateString } from "../utils/toLocaleDateString";
 import { AiFillStar } from "react-icons/ai"
+import { checkIsFollowing } from "../Hooks/checkIsFollowing";
+
+
+
 const MangaDetails = ({route}) =>{
 
     const {id} = route.params;
 
-
     const{ state: manga, loading, error } = useMangaFetch(id);
+
+    
+    const {isFollowing} = checkIsFollowing(manga._id);
+
+    console.log(isFollowing)
+
 
     if (loading) return <ActivityIndicator style={styles.activityIndicatorContainer} />
     if (error) return <Text>Somethig went wrong...</Text>
@@ -20,9 +29,13 @@ const MangaDetails = ({route}) =>{
         <ScrollView>
             <View style={styles.headerSection}>
                 <Image source={manga.poster} style={styles.posterImage} />
-                <Text style={styles.headerAuthor}>Author: Jon simmons</Text>
+                <Text style={styles.headerAuthor}>Author: {manga.author}</Text>
                 <Text style={styles.headerReleaseDate}>{releaseDate}</Text>
+                <TouchableOpacity style={styles.followButton}>
+                    <Text style={{ color: "white", textAlign: 'center' }}> {isFollowing ? "Unfollow" : "Follow"} </Text>
+                </TouchableOpacity>
             </View>
+
 
             <View style={styles.infoGrid}>
                 <View style={styles.infoGridView}>
@@ -95,6 +108,14 @@ const styles = StyleSheet.create({
     activityIndicatorContainer : {
         flex: 1,
         justifyContent: "center",
+    },
+    followButton : {
+        borderRadius: 8,
+        backgroundColor: '#223872',
+        paddingHorizontal: 30,
+        paddingVertical: 5,
+        margin: 10,
+        
     }
 })
 
