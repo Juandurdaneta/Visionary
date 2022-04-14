@@ -4,6 +4,7 @@ import { useMangaFetch } from "../Hooks/useMangaFetch";
 import { toLocaleDateString } from "../utils/toLocaleDateString";
 import { AiFillStar } from "react-icons/ai"
 import { checkIsFollowing } from "../Hooks/checkIsFollowing";
+import FollowButton from "../components/FollowButton";
 
 
 
@@ -14,9 +15,8 @@ const MangaDetails = ({route}) =>{
     const{ state: manga, loading, error } = useMangaFetch(id);
 
     
-    const {isFollowing} = checkIsFollowing(manga._id);
+    const {isFollowing, setIsFollowing} = checkIsFollowing(manga._id);
 
-    console.log(isFollowing)
 
 
     if (loading) return <ActivityIndicator style={styles.activityIndicatorContainer} />
@@ -31,9 +31,13 @@ const MangaDetails = ({route}) =>{
                 <Image source={manga.poster} style={styles.posterImage} />
                 <Text style={styles.headerAuthor}>Author: {manga.author}</Text>
                 <Text style={styles.headerReleaseDate}>{releaseDate}</Text>
-                <TouchableOpacity style={styles.followButton}>
-                    <Text style={{ color: "white", textAlign: 'center' }}> {isFollowing ? "Unfollow" : "Follow"} </Text>
-                </TouchableOpacity>
+
+                
+              <FollowButton isFollowing={isFollowing} mangaId={manga._id} setFollow={setIsFollowing}/>
+                
+
+
+                
             </View>
 
 
@@ -109,14 +113,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
     },
-    followButton : {
-        borderRadius: 8,
-        backgroundColor: '#223872',
-        paddingHorizontal: 30,
-        paddingVertical: 5,
-        margin: 10,
-        
-    }
+    
 })
 
 

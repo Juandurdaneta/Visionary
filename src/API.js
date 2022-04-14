@@ -105,6 +105,25 @@ const apiSettings = {
     getManga : async(id) =>{
         const endpoint = `${API_URL}/manga/${id}`;
         return await (await fetch(endpoint)).json();
+    },
+
+    followManga : async(mangaId) => {
+        const token = await AsyncStorage.getItem('TOKEN');
+
+        const bodyData = {
+            mangaId
+        }
+
+        const data = await(
+            await fetch(`${API_URL}/users/followManga`, {
+                method: 'PUT',
+                headers : { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json'},
+                body: JSON.stringify(bodyData)
+            })
+        ).json();
+
+        return data;
+
     }
 
 }

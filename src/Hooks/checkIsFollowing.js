@@ -9,6 +9,8 @@ export const checkIsFollowing = mangaId => {
     const user = useSelector(state => state.user.user)
    
     useEffect(()=>{
+
+        console.log('triggered')
         dispatch(getUser())
 
         if(mangaId && user.following.includes(mangaId)){
@@ -16,9 +18,12 @@ export const checkIsFollowing = mangaId => {
         } else {
             setIsFollowing(false)
         }
+
+        console.log(isFollowing)
+
     }, [mangaId])
 
 
-    return { isFollowing }
+    return { isFollowing, setIsFollowing }
 
 }
