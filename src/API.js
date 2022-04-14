@@ -124,6 +124,25 @@ const apiSettings = {
 
         return data;
 
+    },
+
+    unfollowManga : async(mangaId) => {
+        const token = await AsyncStorage.getItem('TOKEN');
+
+        const bodyData = {
+            mangaId
+        };
+
+        const data = await(
+            await fetch(`${API_URL}/users/unfollowManga`, {
+                method: 'PUT',
+                headers : { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json'},
+                body: JSON.stringify(bodyData)
+            })
+        ).json();
+
+        return data;
+
     }
 
 }
