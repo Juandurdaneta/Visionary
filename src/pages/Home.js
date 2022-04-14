@@ -18,7 +18,7 @@ const Home = ({navigation}) => {
         dispatch(getUser())
     }, [])
 
-    if(loading) return <ActivityIndicator style={styles.activityIndicatorContainer} />
+    if(loading) return <ActivityIndicator style={styles.activityIndicatorContainer}  />
 
    return(
        <ScrollView style={styles.containerView}>

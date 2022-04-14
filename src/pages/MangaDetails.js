@@ -29,7 +29,7 @@ const MangaDetails = ({route}) =>{
                     <Text><AiFillStar /><Text style={styles.infoGridData}>4.8</Text>/5</Text>
                 </View>
                 <View  style={styles.infoGridView}>
-                    <Text><Text style={styles.infoGridData}>10</Text> Favorites</Text>
+                    <Text><Text style={styles.infoGridData}> {manga.followers} </Text> Following</Text>
                 </View>
                 <View style={{padding: 20}}>
                     <Text><Text style={styles.infoGridData}>{ manga.chapters.length }</Text> Chapters</Text>
