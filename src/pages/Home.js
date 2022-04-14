@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Text, ScrollView, View, StyleSheet } from "react-native";
+import { Text, ScrollView, View, StyleSheet, ActivityIndicator } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import MangaGrid from "../components/MangaGrid";
 import MangaPoster from "../components/MangaPoster";
@@ -17,6 +17,8 @@ const Home = ({navigation}) => {
     useEffect(()=>{
         dispatch(getUser())
     }, [])
+
+    if(loading) return <ActivityIndicator style={styles.activityIndicatorContainer} />
 
    return(
        <ScrollView style={styles.containerView}>
@@ -62,6 +64,10 @@ const styles = StyleSheet.create({
     },
     bodyContainer : {
         padding: 8
+    }, 
+    activityIndicatorContainer : {
+        flex: 1,
+        justifyContent: "center",
     }
     
 })

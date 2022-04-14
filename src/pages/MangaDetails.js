@@ -1,5 +1,5 @@
 import React from "react"
-import { Image, ScrollView, Text, View, StyleSheet } from "react-native";
+import { Image, ScrollView, Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import { useMangaFetch } from "../Hooks/useMangaFetch";
 import { toLocaleDateString } from "../utils/toLocaleDateString";
 import { AiFillStar } from "react-icons/ai"
@@ -10,7 +10,7 @@ const MangaDetails = ({route}) =>{
 
     const{ state: manga, loading, error } = useMangaFetch(id);
 
-    if (loading) return <Text>loading...</Text>
+    if (loading) return <ActivityIndicator style={styles.activityIndicatorContainer} />
     if (error) return <Text>Somethig went wrong...</Text>
 
    const releaseDate = manga && toLocaleDateString(manga.datePublished);
@@ -91,6 +91,10 @@ const styles = StyleSheet.create({
         fontWeight: 600,
         fontSize: 18,
         marginBottom: 10
+    },
+    activityIndicatorContainer : {
+        flex: 1,
+        justifyContent: "center",
     }
 })
 

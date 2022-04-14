@@ -21,6 +21,9 @@ export const useHomeFetch = () =>{
                 ...mangas.foundMangas,
             ]));
 
+            setLoading(false);
+            
+
         } catch(error){
             setError(true);
         }
