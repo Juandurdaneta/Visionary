@@ -58,7 +58,7 @@ const MangaDetails = ({route}) =>{
               <Text>{manga.overview}</Text>
           </View>
 
-          <MangaChapters chapters={manga.chapters} />
+          <MangaChapters mangaId={manga.mangaId} />
 
         </ScrollView>
     );

@@ -1,11 +1,16 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { useChapterFetch } from "../../Hooks/useChapterFetch";
 
-const MangaChapters = ({chapters}) =>{
+const MangaChapters = ({mangaId}) =>{
+
+    const { state: chapters, loading, error} = useChapterFetch(mangaId)
+
+    console.log(chapters)
 
     return(
         <View>
-            <Text>{chapters.length}</Text>
+            <Text>{mangaId}</Text>
         </View>
     )
 
