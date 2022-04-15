@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { Image, ScrollView, Text, View, StyleSheet, ActivityIndicator, TouchableOpacity } from "react-native";
+import { Image, ScrollView, Text, View, StyleSheet, ActivityIndicator, ImageBackground } from "react-native";
 import { useMangaFetch } from "../Hooks/useMangaFetch";
 import { toLocaleDateString } from "../utils/toLocaleDateString";
 import { AiFillStar } from "react-icons/ai"
 import { checkIsFollowing } from "../Hooks/checkIsFollowing";
 import FollowButton from "../components/FollowButton";
-
 
 
 const MangaDetails = ({route}) =>{
@@ -27,6 +26,7 @@ const MangaDetails = ({route}) =>{
 
     return(
         <ScrollView>
+            <ImageBackground source={manga.poster}>
             <View style={styles.headerSection}>
                 <Image source={manga.poster} style={styles.posterImage} />
                 <Text style={styles.headerAuthor}>Author: {manga.author}</Text>
@@ -39,8 +39,7 @@ const MangaDetails = ({route}) =>{
 
                 
             </View>
-
-
+            </ImageBackground>
             <View style={styles.infoGrid}>
                 <View style={styles.infoGridView}>
                     <Text><AiFillStar /><Text style={styles.infoGridData}>4.8</Text>/5</Text>
@@ -72,15 +71,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         padding: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.7)'
     },
     headerAuthor : {
         fontSize: 15,
         fontWeight: 600,
         margin: 10,
-        color: "grey"
     },
     headerReleaseDate : {
-       color: "grey",
     },
     infoGrid : {
         flexDirection: "row",
@@ -88,9 +86,9 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         alignItems: "center",
         padding: 20,
-        margin: 10,
         borderRadius: 15,
-        height: 80
+        height: 80,
+        margin: 10
     },
     infoGridView : {
         borderEndWidth: 1,
