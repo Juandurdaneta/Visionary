@@ -71,7 +71,7 @@ const FollowButton = ({isFollowing, mangaId, setFollow}) => {
             {
               isFollowing ? 
                 <TouchableOpacity style={styles.unfollowButton} onPress={unfollowManga}>
-                    <Text style={{ color: "#223872", textAlign: 'center' }}> Unfollow </Text>
+                    <Text style={{ color: "#324F87", textAlign: 'center' }}> Unfollow </Text>
                 </TouchableOpacity>
                 :
                 <TouchableOpacity style={styles.followButton} onPress={followManga} >
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     },
     unfollowButton : {
         borderRadius: 8,
-        borderColor: '#223872',
+        borderColor: '#324F87',
         borderWidth: 1,
         paddingHorizontal: 30,
         paddingVertical: 5,
