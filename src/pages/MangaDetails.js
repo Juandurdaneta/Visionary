@@ -5,6 +5,7 @@ import { toLocaleDateString } from "../utils/toLocaleDateString";
 import { AiFillStar } from "react-icons/ai"
 import { checkIsFollowing } from "../Hooks/checkIsFollowing";
 import FollowButton from "../components/FollowButton";
+import MangaChapters from "../components/MangaChapters";
 
 
 const MangaDetails = ({route}) =>{
@@ -56,6 +57,8 @@ const MangaDetails = ({route}) =>{
               <Text style={styles.bodyTextBold}>Synopsis</Text>
               <Text>{manga.overview}</Text>
           </View>
+
+          <MangaChapters chapters={manga.chapters} />
 
         </ScrollView>
     );

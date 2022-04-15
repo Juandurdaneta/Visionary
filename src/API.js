@@ -143,6 +143,11 @@ const apiSettings = {
 
         return data;
 
+    },
+
+    getChapters : async(mangaId) =>{
+        const endpoint = `${API_URL}/manga/${mangaId}/chapters`
+        return await (await fetch(endpoint)).json();
     }
 
 }
