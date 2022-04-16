@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Image, ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
-import { useChapterFetch } from "../../Hooks/useChaptersFetch";
+import { useChaptersFetch } from "../../Hooks/useChaptersFetch";
 
 const MangaChapters = ({mangaId, navigation}) =>{
 
-    const { state: chapters, loading, error} = useChapterFetch(mangaId);
+    const { state: chapters, loading, error} = useChaptersFetch(mangaId);
 
     if (loading) return <ActivityIndicator style={styles.activityIndicatorContainer} />
     if (error) return <Text>Somethig went wrong...</Text>

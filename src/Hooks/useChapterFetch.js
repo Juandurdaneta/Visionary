@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import API from "../API";
 
-export const useChaptersFetch = mangaId =>{
+export const useChapterFetch = chapterId =>{
     const [state, setState] = useState([]);
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(false);
 
     useEffect(()=> {
-        const fetchChapters = async() =>{
+        const fetchChapter = async() =>{
             try{
                 setLoading(true);
                 setError(false);
 
-                const chapters = await API.getChapters(mangaId);
+                const chapter = await API.getChapter(chapterId);
 
-                setState(chapters.chaptersFound)
+                setState(chapter[0])
 
                 setLoading(false);
             } catch(error){
@@ -22,9 +22,9 @@ export const useChaptersFetch = mangaId =>{
             }
         };
 
-     fetchChapters();
+     fetchChapter();
 
-    }, [mangaId])
+    }, [chapterId])
 
     return {state, loading, error}
 
