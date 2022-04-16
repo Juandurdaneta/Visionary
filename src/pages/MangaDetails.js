@@ -58,7 +58,12 @@ const MangaDetails = ({route}) =>{
               <Text>{manga.overview}</Text>
           </View>
 
-          <MangaChapters mangaId={manga.mangaId} />
+          <View style={styles.bodyText}>
+              <Text style={styles.bodyTextBold}>Chapters ({manga.chapters.length})</Text>
+              <MangaChapters mangaId={manga.mangaId} />
+          </View>
+
+
 
         </ScrollView>
     );
@@ -81,8 +86,6 @@ const styles = StyleSheet.create({
         fontWeight: 600,
         margin: 10,
     },
-    headerReleaseDate : {
-    },
     infoGrid : {
         flexDirection: "row",
         backgroundColor: "#F7F7F7",
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     bodyText : {
-        padding: 20
+        padding: 15
     },
     bodyTextBold : {
         fontWeight: 600,

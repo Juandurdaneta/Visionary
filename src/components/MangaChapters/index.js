@@ -1,27 +1,38 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
-import { useChapterFetch } from "../../Hooks/useChapterFetch";
+import { View, Text, Image, ActivityIndicator, StyleSheet } from "react-native";
+import { useChapterFetch } from "../../Hooks/useChaptersFetch";
 
 const MangaChapters = ({mangaId}) =>{
 
     const { state: chapters, loading, error} = useChapterFetch(mangaId);
 
-    let cover = chapters.length > 0 && chapters[0].chapterImages[0];
+    if (loading) return <ActivityIndicator style={styles.activityIndicatorContainer} />
+    if (error) return <Text>Somethig went wrong...</Text>
 
-   if(cover){
-       console.log(cover)
-   }
-    
+
 
     return(
         <View>
-           { chapters.length > 0 ?
-            <Image style={{width: 100, height: 100}}source={`data:image/${cover.contentType};base64,${cover.data}`}/>
-            : <Text>Loading..</Text>
-        }
+            {
+                chapters.map((chapter, index)=>(
+                    <Text key={index}>Chapter {chapter.number}</Text>
+                ))
+            }
+
         </View>
     )
 
+
+  
 }
 
+const styles = StyleSheet.create({
+    activityIndicatorContainer : {
+        flex: 1,
+        justifyContent: "center",
+    }
+})
+
 export default MangaChapters;
+
+{/* <Image style={{width: 100, height: 100}}source={`data:image/${cover.contentType};base64,${cover.data}`}/> */}
