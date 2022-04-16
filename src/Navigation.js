@@ -72,7 +72,9 @@ export default function Navigation(){
                             tabBarButton: () => (
                                 <View style={{width:0, height:0}}></View>
                             ),
-                            tabBarVisible: false
+                            tabBarVisible: false,
+                            tabBarStyle:{display:'none'},
+                            headerLeft: () => (<HeaderBackButton onPress={() => navigation.navigate('Manga Details', {id: route.params.mangaId})}/>)
                         })}/>
                         
                     </Tab.Navigator>

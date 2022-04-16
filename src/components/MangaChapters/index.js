@@ -15,7 +15,7 @@ const MangaChapters = ({mangaId, navigation}) =>{
         <View>
             {
                 chapters.map((chapter, index)=>(
-                    <Text key={index} onPress={()=> navigation.navigate('Manga Reader', {id: chapter._id})} >Chapter {chapter.number}</Text>
+                    <Text key={index} onPress={()=> navigation.navigate('Manga Reader', {id: chapter._id, mangaId: chapter.mangaId})} >Chapter {chapter.number}</Text>
                 ))
             }
 
