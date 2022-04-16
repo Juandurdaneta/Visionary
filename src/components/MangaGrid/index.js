@@ -12,7 +12,10 @@ const MangaGrid = ({children}) => {
 
 const styles = StyleSheet.create({
     grid: {
-        flexDirection: "row"
+        flexDirection: "row",
+        flex: 1,
+        flexWrap:'wrap',
+        alignItems:'flex-start'
     }
 })
 

@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     },
     headerAuthor : {
         fontSize: 15,
-        fontWeight: 600,
+        fontWeight: "600",
         margin: 10,
     },
     infoGrid : {
@@ -99,17 +99,19 @@ const styles = StyleSheet.create({
     infoGridView : {
         borderEndWidth: 1,
         borderEndColor: "#D7D6DB",
-        padding: 20
+        padding: 20,
     },
     infoGridData : {
-        fontWeight: 600,
-        fontSize: 16
+        fontWeight: "600",
+        fontSize: 16,
+        textAlign: "center"
+
     },
     bodyText : {
         padding: 15
     },
     bodyTextBold : {
-        fontWeight: 600,
+        fontWeight: "600",
         fontSize: 18,
         marginBottom: 10
     },

@@ -20,7 +20,7 @@ const Profile = () => {
 
            <View style={styles.headerProfileImage}>
 
-            <Image source={user && user.profileImage} style={styles.profilePicture} />
+            <Image source={{uri: user.profileImage}} style={styles.profilePicture} />
 
                 <View style={styles.headerProfileUser}> 
 

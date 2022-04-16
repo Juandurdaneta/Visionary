@@ -12,7 +12,7 @@ const MangaPoster = ({manga, navigation}) =>{
 const styles = StyleSheet.create({
     mangaPoster : {
         height: 160,
-        width: 110,
+        width: 109,
         margin: 5,
         borderRadius: 10
     }
