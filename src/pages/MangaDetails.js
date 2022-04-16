@@ -8,7 +8,7 @@ import FollowButton from "../components/FollowButton";
 import MangaChapters from "../components/MangaChapters";
 
 
-const MangaDetails = ({route}) =>{
+const MangaDetails = ({route, navigation}) =>{
 
     const {id} = route.params;
 
@@ -60,7 +60,7 @@ const MangaDetails = ({route}) =>{
 
           <View style={styles.bodyText}>
               <Text style={styles.bodyTextBold}>Chapters ({manga.chapters.length})</Text>
-              <MangaChapters mangaId={manga.mangaId} />
+              <MangaChapters mangaId={manga.mangaId} navigation={navigation}/>
           </View>
 
 

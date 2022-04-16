@@ -20,6 +20,7 @@ import MenuComponent from "./components/MenuComponent";
 import { MenuProvider } from "react-native-popup-menu";
 import { AiOutlineHome, AiFillHome, AiOutlineUser } from 'react-icons/ai'
 import { View } from "react-native";
+import MangaReader from "./pages/MangaReader";
 // navigators
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,9 +65,16 @@ export default function Navigation(){
                                 <View style={{width:0, height:0}}></View>
                             ),
                             tabBarVisible:false,
-                            title: route.params ? route.params.name : "Hello world",
+                            title: route.params ? route.params.name : "",
                             headerLeft: () => (<HeaderBackButton onPress={() => navigation.goBack(null)}/>)
                         })}/>
+                        <Tab.Screen name="Manga Reader" component={MangaReader} options={({route, navigation}) =>({
+                            tabBarButton: () => (
+                                <View style={{width:0, height:0}}></View>
+                            ),
+                            tabBarVisible: false
+                        })}/>
+                        
                     </Tab.Navigator>
                 </MenuProvider>
             ): (

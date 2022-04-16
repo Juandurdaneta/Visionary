@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, Image, ActivityIndicator, StyleSheet } from "react-native";
+import { View, Text, Image, ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
 import { useChapterFetch } from "../../Hooks/useChaptersFetch";
 
-const MangaChapters = ({mangaId}) =>{
+const MangaChapters = ({mangaId, navigation}) =>{
 
     const { state: chapters, loading, error} = useChapterFetch(mangaId);
 
@@ -15,7 +15,7 @@ const MangaChapters = ({mangaId}) =>{
         <View>
             {
                 chapters.map((chapter, index)=>(
-                    <Text key={index}>Chapter {chapter.number}</Text>
+                    <Text key={index} onPress={()=> navigation.navigate('Manga Reader', {id: chapter._id})} >Chapter {chapter.number}</Text>
                 ))
             }
 
